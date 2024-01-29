@@ -1,0 +1,222 @@
+/*---jeito menos otimizado
+body { 
+    background-image: url(./assets/bg-mobile.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}*/
+
+/* jeito mais otimizado-> background: color image repeat position/size */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* font-size: 25px; */
+}
+
+:root{
+    /* --bg-url: url(./assets/bg-mobile.jpg); */
+    --bg-url: url(./assets/bg-desktop.jpg);
+    --text-color: white;
+    --stroke-color: rgba(255, 255, 255, 0.1);
+    --stroke-color: rgba(255, 255, 255, 0.1);
+    --social-links-hover: rgba(204, 198, 198, 0.356);
+    --switch-bg-url: url(./assets/moon-stars.svg);
+    --switch-color: rgba(255, 255, 255, 0.1);
+    --border-switch: white;
+}
+
+
+.light{
+    /* --bg-url: url(./assets/bg-mobile-light.jpg); */
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+    --text-color: black;
+    a {font-weight: bold;}
+    --stroke-color: rgba(255, 255, 255, 0.01);
+    --social-links-hover: rgba(43, 43, 43, 0.171);
+    --switch-bg-url: url(./assets/sun.svg);
+    --switch-color: rgba(255, 255, 255, 0.5);
+    --border-switch: rgb(0, 0, 0);
+    
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Source Code Pro', monospace;
+    background: var(--bg-url) no-repeat top center/cover;
+    color: var(--text-color);
+}
+
+
+#container {
+    /* border: 1px solid rgb(255, 255, 255); */
+    height: 712px;
+    width: 360px;
+    
+}
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1%;
+    
+}
+
+.profile__photo {
+    height: 112px;
+    width: 112px;
+    border-radius: 50%;
+    border: 1px solid rgb(21, 253, 0);
+}
+
+.switch { 
+    /* nao entendi mt bem esse relative */
+    position: relative;
+    width: 64px;
+    margin: 4px auto;
+    
+}
+
+
+.switch button {
+    width: 32px;
+    height: 32px;
+    background: white var(--switch-bg-url) no-repeat center;
+    border: 0.01px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    top: -17%;
+    left: -3%;
+    transition: background 0.5s;
+    
+}
+
+.light .switch button{
+    right: -3%;
+    left: initial;
+}
+
+.switch span {
+    display: block;
+    width: 64px;
+    height: 24px;
+    border: 0.01px solid var(--border-switch);
+    background-color: var(--switch-color);
+    backdrop-filter: blur(4px);
+    -webkit-backgrop-filter: blur(4px);
+    border-radius: 10px;
+    
+}
+
+.profile__name::after{
+    content: "";
+    width: 3px;
+    height: 20px;
+    background: #00f320;
+    display: inline-flex;
+    animation: cursor-blink 1.5s steps(2) infinite;
+    position: fixed;
+    /* nao faço ideia como esse position fixed serviu pra centralizar meu cursor, mas tudo bem */
+}
+
+@keyframes cursor-blink {
+    0% {
+        opacity: 0;
+    }
+}
+
+.links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 10px 24px;
+    
+}
+
+.links__buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--stroke-color);
+    width: 235px;
+    height: 55px;
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+    -webkit-backgrop-filter: blur(4px);
+    transition: background 0.2s; 
+    border: 1px solid var(--text-color);
+}
+
+.links__buttons:hover{
+     background-color: rgba(5, 5, 5, 0.116);
+     border: 2px solid var(--text-color);
+    /* background-color: rgb(0, 255, 55); */
+    /* a{color:black;} */
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+}
+
+.social-links{
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 130px;
+    font-size: 25px;
+}
+
+.social-links a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    
+}
+
+.social-links a:hover{
+    background-color: var(--social-links-hover);
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+
+/* anotações
+
+-alguns elementos vem por padrão display:block e outros display:inline
+
+-display:block tem por característica tomar a linha toda como sua caixa, uma div por exemplo.
+
+-display:inline tem por característica adicionar o elemento em questão ao lado, já que não ocupa  uma linha toda, uma tag img, por exemplo.
+
+--acerca de margin e padding properties:
+se eu dou:
+-> margin:auto, aplica auto para as 4 posições
+-> margin: 10px 10px, top+bottom, left+right, respectivamente.
+-> margin: 10px 10px 10px, top, both sides, bottom, respectivamente.
+-> margin: 10px 10px 10px 10px, reloginho: top, right, bottom, left, respectivamente.
+*/
