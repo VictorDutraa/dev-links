@@ -71,11 +71,10 @@ body{
     
 }
 
-
 .switch button {
     width: 32px;
     height: 32px;
-    background: white var(--switch-bg-url) no-repeat center;
+    background: rgb(255, 255, 255) var(--switch-bg-url) no-repeat center;
     border: 0.01px solid rgb(0, 0, 0);
     border-radius: 50%;
     position: absolute;
@@ -84,12 +83,17 @@ body{
     top: -17%;
     left: -3%;
     transition: background 0.5s;
-    
+    animation: slide-back 0.3s;
+}
+
+.switch button:hover{
+    outline: 4px solid var(--social-links-hover);
 }
 
 .light .switch button{
-    right: -3%;
-    left: initial;
+    /* right: -3%; */
+    /* left: initial; */
+    animation: slide-in 0.3s forwards;
 }
 
 .switch span {
@@ -120,6 +124,24 @@ body{
     }
 }
 
+@keyframes slide-in{
+    from{
+        left: 0;
+    }
+    to{
+        left: 53%;
+    }
+}
+
+@keyframes slide-back{
+    from{
+        left: 53%;
+    }
+    to{
+        left: -3%;
+    }
+}
+
 .links {
     list-style: none;
     display: flex;
@@ -145,8 +167,8 @@ body{
 }
 
 .links__buttons:hover{
-     background-color: rgba(5, 5, 5, 0.116);
-     border: 2px solid var(--text-color);
+    background-color: rgba(5, 5, 5, 0.116);
+    border: 2px solid var(--text-color);
 }
 
 a {
